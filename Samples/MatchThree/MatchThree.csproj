@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PuzzleKit\PuzzleKit.csproj" />
+      <ProjectReference Include="..\..\PuzzleKit\PuzzleKit.csproj" />
     </ItemGroup>
 
 </Project>

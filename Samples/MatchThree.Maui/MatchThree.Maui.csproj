@@ -64,8 +64,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MatchThree\MatchThree.csproj" />
-      <ProjectReference Include="..\PuzzleKit.Backends.Maui\PuzzleKit.Backends.Maui.csproj" />
-      <ProjectReference Include="..\PuzzleKit\PuzzleKit.csproj" />
+      <ProjectReference Include="..\..\PuzzleKit.Backends.Maui\PuzzleKit.Backends.Maui.csproj" />
+      <ProjectReference Include="..\..\PuzzleKit\PuzzleKit.csproj" />
     </ItemGroup>
 
 </Project>
