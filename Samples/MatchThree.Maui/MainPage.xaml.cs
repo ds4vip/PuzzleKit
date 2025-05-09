@@ -42,7 +42,6 @@ public partial class MainPage : ContentPage
         
         _isInitialized = true;
         InitializeGame();
-        StartGameLoop();
     }
     
     private void OnGraphicsViewSizeChanged(object? sender, EventArgs e)
@@ -56,7 +55,6 @@ public partial class MainPage : ContentPage
         {
             _isInitialized = true;
             InitializeGame();
-            StartGameLoop();
         }
     }
     
@@ -67,31 +65,10 @@ public partial class MainPage : ContentPage
         _graphicsService = new MauiGraphicsService(GameGraphicsView);
         var inputService = new MauiInputService(GameGraphicsView);
         var audioService = new MauiAudioService();
-        
-        GameApplication.Instance.Initialize(_graphicsService, inputService, audioService);
-        GameApplication.Instance.Run(new MatchThreeGameState());
+
+        var app = GameApplication.Instance;
+        app.Initialize(_graphicsService, inputService, audioService);
+        app.Run(new MatchThreeGameState());
     }
 
-    private void StartGameLoop()
-    {
-        System.Diagnostics.Debug.WriteLine("Starting game loop");
-        Device.StartTimer(TimeSpan.FromMilliseconds(16), OnFrameUpdate);
-    }
-
-    private bool OnFrameUpdate()
-    {
-        if (!_isInitialized) return true;
-        
-        var now = DateTime.Now;
-        var delta = (float)(now - _lastUpdate).TotalSeconds;
-        _lastUpdate = now;
-        
-        // 極端なデルタ時間を制限
-        if (delta > 0.1f) delta = 0.016f;
-        
-        GameApplication.Instance.Update(delta);
-        _graphicsService?.RequestRedraw();
-        
-        return true; // ループを継続
-    }
 }

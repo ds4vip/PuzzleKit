@@ -62,12 +62,12 @@ public class GameApplication
         _currentState.Enter();
     }
 
-    public void Update(float deltaTime)
-    {
-        var gameTime = new GameTime();
-        gameTime.ElapsedTime = deltaTime;
-        _currentState?.Update(gameTime);
-    }
+    //public void Update(float deltaTime)
+    //{
+    //    var gameTime = new GameTime();
+    //    gameTime.ElapsedTime = deltaTime;
+    //    _currentState?.Update(gameTime);
+    //}
 
     public void Update(GameTime gameTime)
     {
@@ -77,6 +77,7 @@ public class GameApplication
     public void Draw(Graphics.ICanvas canvas)
     {
         _currentState?.Draw(canvas);
+        Graphics?.RequestRedraw();
     }
 
     /// <summary>
